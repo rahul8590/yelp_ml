@@ -20,12 +20,15 @@ def fetch_bid():
 	fdata = open('./data/restaurant_categories.txt')
 	rest_category = []
 	for names in fdata:
-		rest_category.append(names)
+		names = names.strip('\n')
+		rest_category.append(names.lower())
+
+	print "the restaurant categories are ",rest_category
 
 	fbr = open(business_file,'r')
 	for reviews in fbr:
 		jl = json.loads(reviews)
-		j_categories  = map(str,jl['categories'])
+		j_categories  = [str(i).lower() for i in jl['categories']]
 		if set(j_categories) & set(rest_category):
 			bid.append(str(jl['business_id']))
 	return bid
