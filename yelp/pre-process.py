@@ -1,7 +1,6 @@
 import sys
 import re
-
-## replace all costs by MONEY
+import multiprocessing.dummy
 ## replace all year by YEAR
 ## take care of wasn't haven't havenot wasnot -> wasn't haven't
 
@@ -23,6 +22,8 @@ re_repl     = ("MONEY", "PHONE", "WEEKEND", "YEAR", "NUMBER")
 patterns = zip(re_patterns, re_repl)
 
 donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "won't" : 1, "don't" : 1}
+
+thread_pool = multiprocessing.dummy.Pool(15)
 
 def process(wrd):
         if wrd in donot_process_wrds:
@@ -46,7 +47,7 @@ def process(wrd):
 def preprocess(ifile):
         for line in open(ifile, 'r'):
                wrds = map(lambda w : w.lower(), line.strip().split())
-               wrds = map(lambda w : process(w), wrds)
+               wrds = thread_pool.map(process, wrds)
                print ' '.join(wrds) 
                      
 
