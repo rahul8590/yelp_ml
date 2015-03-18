@@ -11,17 +11,17 @@ money_re  = re.compile('|'.join([
 phone_re  = re.compile('|'.join([
                         r'(\d(\s|-)){0,1}\d{3}(\s|-)\d{3}-\d{4}',             ## 765-413-3419
                         r'(\d(\s|-)){0,1}\(\d{3}\)(\s|-)\d{3}-\d{4}' ]))      ## (765)-413-3419, (765) 413-3419
-#month_re   = re.compile(r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec", re.I)
-#weekday_re = re.compile(r"Mon|Tue|Tues|Wed|Thu|Thurs|Fri", re.I)
+month_re   = re.compile(r"^(Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)$", re.I)
+weekday_re = re.compile(r"^(Mon|Monday|Tue|Tues|Tuesday|Wed|Wednesday|Thu|Thurs|Thrusday|Fri|Friday)$", re.I)
 weekend_re = re.compile(r"Saturday|Sunday", re.I)
 year_re    = re.compile(r"^(19|20)\d{2}s*")
 num_re     = re.compile(r"^(.|!|\s)*\d+(.|!|\s)*$")
-re_patterns = (money_re, phone_re, weekend_re, year_re, num_re)
-re_repl     = ("MONEY", "PHONE", "WEEKEND", "YEAR", "NUMBER") 
+re_patterns = (money_re, phone_re, weekday_re, weekend_re, year_re, num_re)
+re_repl     = ("MONEY", "PHONE", "WEEKDAY", "WEEKEND", "YEAR", "NUMBER") 
 
 patterns = zip(re_patterns, re_repl)
 
-donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "won't" : 1, "don't" : 1}
+donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "won't" : 1, "don't" : 1, "MA" :1, "VA" : 1, "WA" : 1} ## US States
 
 thread_pool = multiprocessing.dummy.Pool(15)
 
