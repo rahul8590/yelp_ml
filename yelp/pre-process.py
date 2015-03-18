@@ -11,7 +11,7 @@ money_re = re.compile('|'.join([
 
 def process(wrd):
         if money_re.match(wrd):
-            return wrd
+            return "MONEY"
         new_wrd = []
         prev_ch = False ## was previous char space ?
         for s in wrd:
