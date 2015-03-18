@@ -1,12 +1,20 @@
 import sys
 
+## replace all costs by MONEY
+## replace all year by YEAR
+## take care of wasn't haven't havenot wasnot -> wasn't haven't
+
 def process(wrd):
         new_wrd = []
+        prev_ch = False ## was previous char space ?
         for s in wrd:
               if s.isalpha() or s.isdigit() or s == '-':
                    new_wrd.append(s) 
+                   prev_ch = True
               else :
-                   new_wrd.append(' ')
+                   if prev_ch: 
+                     new_wrd.append(' ')
+                     prev_ch = False
         return ''.join(new_wrd)
 
 def preprocess(ifile):
