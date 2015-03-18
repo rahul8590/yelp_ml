@@ -3,7 +3,7 @@ import re
 import multiprocessing as mp
 
 def process(wrd):
-        if wrd in donot_process_wrds:
+        if common_re.match(wrd):
             return wrd
         for re_pattern, repl in patterns:
                 if re_pattern.match(wrd):
@@ -23,29 +23,29 @@ def process(wrd):
 
 def preprocess(ifile):
         for line in open(ifile, 'r'):
-               wrd = [w.lower() for w in line.strip().split()]
+               wrd  = [w.lower() for w in line.strip().split()]
                wrds = thread_pool.map(process,wrd)
                print ' '.join(wrds) 
                      
 
 if __name__ == '__main__':
-  money_re  = re.compile('|'.join([
+  money_re    = re.compile('|'.join([
                           r'\$(\d*\.\d{1,2,3,4})',   ## $.50000, $.34
                           r'\$(\d+)',               ## $500, $300
                           r'\$(\d+\.\d{1,2,3,4})']))  #3 $5.33, $3.2.2
-  phone_re  = re.compile('|'.join([
+  phone_re    = re.compile('|'.join([
                           r'(\d(\s|-)){0,1}\d{3}(\s|-)\d{3}-\d{4}',             ## 765-413-3419
                           r'(\d(\s|-)){0,1}\(\d{3}\)(\s|-)\d{3}-\d{4}' ]))      ## (765)-413-3419, (765) 413-3419
-  weekday_re = re.compile(r"^(Monday|Tues|Tuesday|Wednesday|Thurs|Thrusday|Friday)$", re.I)
-  weekend_re = re.compile(r"^(Saturday|Sunday)$", re.I)
-  year_re    = re.compile(r"^(19|20)\d{2}s*")
-  num_re     = re.compile("|".join([
+  weekday_re  = re.compile(r"^(Monday|Tues|Tuesday|Wednesday|Thurs|Thrusday|Friday)$", re.I)
+  weekend_re  = re.compile(r"^(Saturday|Sunday)$", re.I)
+  year_re     = re.compile(r"^(19|20)\d{2}s*")
+  num_re      = re.compile("|".join([
                           r"^(.|!|\s)*\d+(.|!|\s)*$",
                           r"^(\d+)$"]))
+  common_re   = re.compile(r"^(haven't|shouldn't|can't|won't|don't|that's|i'm|it's|i've|i'll|here's)$")
   re_patterns = (money_re, phone_re, weekday_re, weekend_re, year_re, num_re)
   re_repl     = ("MONEY", "PHONE", "WEEKDAY", "WEEKEND", "YEAR", "NUMBER") 
-  patterns = zip(re_patterns, re_repl)
-  donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "can't" : 1, "won't" : 1, "don't" : 1, "that's" : 1, "i'm" : 1, "it's" : 1, "i've" : 1, "i'll" :1 , "here's" : 1}
+  patterns    = zip(re_patterns, re_repl)
   thread_pool = mp.Pool(processes=5)
   preprocess(sys.argv[1])
 
