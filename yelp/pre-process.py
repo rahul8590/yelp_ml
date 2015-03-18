@@ -24,6 +24,7 @@ def process(wrd):
 def preprocess(ifile):
         for line in open(ifile, 'r'):
                wrd = [w.lower() for w in line.strip().split()]
+               if wrd == []: continue
                wrds = thread_pool.map(process,wrd)
                print ' '.join(wrds) 
                      
