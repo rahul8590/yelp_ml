@@ -26,7 +26,6 @@ def preprocess(ifile):
         frw = open('preprocess_restaurant.txt','w')
         thread_pool = mp.Pool(processes=2)
         for line in open(ifile, 'r'):
-               count += 1
                wrd  = [w.lower() for w in line.strip().split()]
                if wrd == []: continue
                #wrds = [process(w) for w in wrd]
