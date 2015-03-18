@@ -43,7 +43,7 @@ if __name__ == '__main__':
   weekend_re = re.compile(r"^(Sat|Saturday|Sun|Sunday)$", re.I)
   year_re    = re.compile(r"^(19|20)\d{2}s*")
   num_re     = re.compile(r"^(.|!|\s)*\d+(.|!|\s)*$")
-  re_patterns = (money_re, phone_re, weekday, weekend_re, year_re, num_re)
+  re_patterns = (money_re, phone_re, weekday_re, weekend_re, year_re, num_re)
   re_repl     = ("MONEY", "PHONE", "WEEKDAY", "WEEKEND", "YEAR", "NUMBER") 
   patterns = zip(re_patterns, re_repl)
   donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "won't" : 1, "don't" : 1}
