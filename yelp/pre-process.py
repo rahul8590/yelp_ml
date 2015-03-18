@@ -1,29 +1,6 @@
 import sys
 import re
-import multiprocessing.dummy
-## replace all year by YEAR
-## take care of wasn't haven't havenot wasnot -> wasn't haven't
-
-money_re  = re.compile('|'.join([
-                        r'\$(\d*\.\d{1,2,3,4})',   ## $.50000, $.34
-                        r'\$(\d+)',               ## $500, $300
-                        r'\$(\d+\.\d{1,2,3,4})']))  #3 $5.33, $3.2.2
-phone_re  = re.compile('|'.join([
-                        r'(\d(\s|-)){0,1}\d{3}(\s|-)\d{3}-\d{4}',             ## 765-413-3419
-                        r'(\d(\s|-)){0,1}\(\d{3}\)(\s|-)\d{3}-\d{4}' ]))      ## (765)-413-3419, (765) 413-3419
-#month_re   = re.compile(r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec", re.I)
-#weekday_re = re.compile(r"Mon|Tue|Tues|Wed|Thu|Thurs|Fri", re.I)
-weekend_re = re.compile(r"Saturday|Sunday", re.I)
-year_re    = re.compile(r"^(19|20)\d{2}s*")
-num_re     = re.compile(r"^(.|!|\s)*\d+(.|!|\s)*$")
-re_patterns = (money_re, phone_re, weekend_re, year_re, num_re)
-re_repl     = ("MONEY", "PHONE", "WEEKEND", "YEAR", "NUMBER") 
-
-patterns = zip(re_patterns, re_repl)
-
-donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "won't" : 1, "don't" : 1}
-
-thread_pool = multiprocessing.dummy.Pool(15)
+import multiprocessing as mp
 
 def process(wrd):
         if wrd in donot_process_wrds:
@@ -46,12 +23,31 @@ def process(wrd):
 
 def preprocess(ifile):
         for line in open(ifile, 'r'):
-               wrds = map(lambda w : w.lower(), line.strip().split())
-               wrds = thread_pool.map(process, wrds)
+               wrd = [w.lower() for w in line.strip().split()]
+               wrds = thread_pool.map(process,wrd)
                print ' '.join(wrds) 
                      
 
 if __name__ == '__main__':
-       preprocess(sys.argv[1])
+  ## replace all year by YEAR
+  ## take care of wasn't haven't havenot wasnot -> wasn't haven't
+  money_re  = re.compile('|'.join([
+                          r'\$(\d*\.\d{1,2,3,4})',   ## $.50000, $.34
+                          r'\$(\d+)',               ## $500, $300
+                          r'\$(\d+\.\d{1,2,3,4})']))  #3 $5.33, $3.2.2
+  phone_re  = re.compile('|'.join([
+                          r'(\d(\s|-)){0,1}\d{3}(\s|-)\d{3}-\d{4}',             ## 765-413-3419
+                          r'(\d(\s|-)){0,1}\(\d{3}\)(\s|-)\d{3}-\d{4}' ]))      ## (765)-413-3419, (765) 413-3419
+  #month_re   = re.compile(r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec", re.I)
+  #weekday_re = re.compile(r"Mon|Tue|Tues|Wed|Thu|Thurs|Fri", re.I)
+  weekend_re = re.compile(r"Saturday|Sunday", re.I)
+  year_re    = re.compile(r"^(19|20)\d{2}s*")
+  num_re     = re.compile(r"^(.|!|\s)*\d+(.|!|\s)*$")
+  re_patterns = (money_re, phone_re, weekend_re, year_re, num_re)
+  re_repl     = ("MONEY", "PHONE", "WEEKEND", "YEAR", "NUMBER") 
+  patterns = zip(re_patterns, re_repl)
+  donot_process_wrds = {"haven't" : 1, "shouldn't" : 1, "won't" : 1, "don't" : 1}
+  thread_pool = mp.Pool(processes=4)
+  preprocess(sys.argv[1])
 
 
