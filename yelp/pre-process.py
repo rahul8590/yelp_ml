@@ -2,7 +2,6 @@ import sys
 import re
 import multiprocessing as mp
 
-count = 0
 
 def process(wrd):
         if common_re.match(wrd):
@@ -24,13 +23,14 @@ def process(wrd):
         return ''.join(new_wrd)
 
 def preprocess(ifile):
-        global count
         frw = open('preprocess_restaurant.txt','w')
+        thread_pool = mp.Pool(processes=2)
         for line in open(ifile, 'r'):
                count += 1
                wrd  = [w.lower() for w in line.strip().split()]
                if wrd == []: continue
-               wrds = [process(w) for w in wrd]
+               #wrds = [process(w) for w in wrd]
+               wrds = thread_pool.map(process, wrd)
                fwline = ' '.join(wrds) 
                frw.write(fwline)
                frw.write("\n")
@@ -56,6 +56,5 @@ if __name__ == '__main__':
   re_patterns = (money_re, weekday_re, weekend_re, year_re , phone_re)
   re_repl     = ("MONEY", "PHONE", "WEEKDAY", "WEEKEND", "YEAR", "NUMBER") 
   patterns    = zip(re_patterns, re_repl)
-  #thread_pool = mp.Pool(processes=5)
   preprocess(sys.argv[1])
 
