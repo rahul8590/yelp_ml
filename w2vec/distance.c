@@ -15,10 +15,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <malloc.h>
+#include <stdlib.h>
 
 const long long max_size = 2000;         // max length of strings
-const long long N = 40;                  // number of closest words that will be shown
+const long long N = 30;                  // number of closest words that will be shown
 const long long max_w = 50;              // max length of vocabulary entries
 
 int main(int argc, char **argv) {
@@ -41,8 +41,9 @@ int main(int argc, char **argv) {
     printf("Input file not found\n");
     return -1;
   }
-  fscanf(f, "%lld", &words);
-  fscanf(f, "%lld", &size);
+  //fscanf(f, "%lld", &words);
+  //fscanf(f, "%lld", &size);
+  fscanf(f, "%lld %lld\n", &words, &size);
   vocab = (char *)malloc((long long)words * max_w * sizeof(char));
   for (a = 0; a < N; a++) bestw[a] = (char *)malloc(max_size * sizeof(char));
   M = (float *)malloc((long long)words * (long long)size * sizeof(float));
@@ -51,18 +52,13 @@ int main(int argc, char **argv) {
     return -1;
   }
   for (b = 0; b < words; b++) {
-    a = 0;
-    while (1) {
-      vocab[b * max_w + a] = fgetc(f);
-      if (feof(f) || (vocab[b * max_w + a] == ' ')) break;
-      if ((a < max_w) && (vocab[b * max_w + a] != '\n')) a++;
-    }
-    vocab[b * max_w + a] = 0;
-    for (a = 0; a < size; a++) fread(&M[a + b * size], sizeof(float), 1, f);
+    fscanf(f, "%s%c", &vocab[b * max_w], &ch);
+    for (a = 0; a < size; a++) fscanf(f, "%f%c", &M[a + b * size], &ch);  //fread(&M[a + b * size], sizeof(float), 1, f);
     len = 0;
     for (a = 0; a < size; a++) len += M[a + b * size] * M[a + b * size];
     len = sqrt(len);
     for (a = 0; a < size; a++) M[a + b * size] /= len;
+    fscanf(f,"\n");
   }
   fclose(f);
   while (1) {
