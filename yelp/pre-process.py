@@ -49,11 +49,11 @@ if __name__ == '__main__':
   weekday_re  = re.compile(r"^(Monday|Tues|Tuesday|Wednesday|Thurs|Thrusday|Friday)$", re.I)
   weekend_re  = re.compile(r"^(Saturday|Sunday)$", re.I)
   year_re     = re.compile(r"^(19|20)\d{2}s*")
-  num_re      = re.compile("|".join([
-                          r"^(.|!|\s)*\d+(.|!|\s)*$",
-                          r"^(\d+)$"]))
+  #num_re      = re.compile("|".join([
+  #                        r"^(.|!|\s)*\d+(.|!|\s)*$",
+  #                        r"^(\d+)$"]))
   common_re   = re.compile(r"^(haven't|shouldn't|can't|won't|don't|that's|i'm|it's|i've|i'll|here's)$")
-  re_patterns = (money_re, weekday_re, weekend_re, year_re, num_re)
+  re_patterns = (money_re, weekday_re, weekend_re, year_re)
   re_repl     = ("MONEY", "PHONE", "WEEKDAY", "WEEKEND", "YEAR", "NUMBER") 
   patterns    = zip(re_patterns, re_repl)
   #thread_pool = mp.Pool(processes=5)
