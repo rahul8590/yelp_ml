@@ -1,14 +1,21 @@
 import sys
+import re
 
 ## replace all costs by MONEY
 ## replace all year by YEAR
 ## take care of wasn't haven't havenot wasnot -> wasn't haven't
 
+money_re = re.compile('|'.join([
+              r'^\$(\d*\.\d{1,2,3)$',
+              r'^\$(\d+)$']))
+
 def process(wrd):
+        if money_re.match(wrd):
+            return wrd
         new_wrd = []
         prev_ch = False ## was previous char space ?
         for s in wrd:
-              if s.isalpha() or s.isdigit() or s == '-':
+              if s.isalpha() or s.isdigit() or s  == '-':
                    new_wrd.append(s) 
                    prev_ch = True
               else :
