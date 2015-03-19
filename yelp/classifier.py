@@ -29,17 +29,21 @@ def cross_val(X,y):
   #pipeline = Pipeline([#('feature_trans', MinMaxScaler()), 
     #('feature_sel', RFE(BayesianRidge())), 
   #  ('reg', BayesianRidge())])
+  #LinearSVC
+  #tuned_parameters = {'loss': ['l1','l2'],'penalty': ['l2'],
+  #                    'C': [1.0,2.0,5.0,10.0]}
 
-  tuned_parameters = {'loss': ['l1','l2'],'penalty': ['l2'],
-                      'C': [1.0,2.0,5.0,10.0]}
-
+  #SVM
+  tuned_parameters = {'C': [1.0,2.0,5.0,10.0],
+                      'kernel': ['linear','poly'],
+                      'probability': [True]}
 
   scores = ['accuracy']
 
   for score in scores:
       print("# Tuning hyper-parameters for %s" % score)
       print()
-      clf = GridSearchCV(svm.LinearSVC(), tuned_parameters, cv=5, scoring=score)
+      clf = GridSearchCV(svm.SVC(), tuned_parameters, cv=5, scoring=score)
       clf.fit(X_train, y_train)
       print("Best parameters set found on development set:")
       print()
