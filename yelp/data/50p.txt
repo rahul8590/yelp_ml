@@ -22,5 +22,31 @@ bean
 spaghetti
 pasta
 pancake
+noodles
+milanese
+piccata
+beef
+ravioli
+flautas
+bagel
+nicoise
+meatballs
+jambalaya
+fajita
+crepes
+macarons
+croissant
+prawn
+satay
+okra
+kofta
+coleslaw
+sesame
+wonton
+mussels
+clam
+maple
+doughnut
+parfait
 
 
