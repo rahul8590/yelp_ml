@@ -19,7 +19,9 @@ void load_dataset(const char* input_f, vector< vector<float> >& data, vector<str
 	string line, wrd;
 	float val, norm = 0;
         cout << "Loading dataset..." << endl;
+        bool firstline = true;
         while (getline(fi, line, '\n')) {
+                if (firstline) { firstline = false; continue ;}
 		stringstream strin;
 		strin << line;
 		strin >> wrd;
