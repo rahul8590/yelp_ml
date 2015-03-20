@@ -103,15 +103,44 @@ if __name__ == '__main__':
   data = np.array(data_list)
   y = data[:,-1] 
   X = data[:, :-1] 
-  clf_estimator = cross_val(X,y)
-
-  rand_word = random.choice(entire_dict_feat.keys()) #getting a random word
-  print "random word is ", rand_word
-  print "feature of the random word is ",entire_dict_feat[rand_word]
-  rand_word_vector = entire_dict_feat[rand_word]
   
-  clf_estimator.predict(rand_word_vector)
-  print clf_estimator.predict_proba(rand_word_vector)
+  clf = cross_val(X,y)
+  #clf = svm.SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, 
+  #  degree=3, gamma=0.0,kernel='linear', max_iter=-1, probability=True, 
+  #  random_state=None, shrinking=True, tol=0.001, verbose=False)
+
+
+  #rand_word = random.choice(entire_dict_feat.keys()) #getting a random word
+  '''
+  rand_word = 'tasty'
+  print "random word is ", rand_word
+  print "feature vector of the random word is ",entire_dict_feat[rand_word]
+  rand_word_vector = entire_dict_feat[rand_word]
+  print clf.predict(rand_word_vector)[0]
+  print clf.predict_proba(rand_word_vector)[0][1]
+  '''
+
+  
+  #Checking for all the words with label == 1
+  flabel = open('label1.txt','w')
+  for word in entire_dict_feat:
+    rand_word_vector = entire_dict_feat[word]
+    #print "word is ",word
+    #print "rand_word_vector",rand_word_vector
+
+    #removing the last element which I added while training set
+    #this means this word is most likely in 50p/50n words
+    if len(rand_word_vector) > 100:
+      rand_word_vector.pop()  
+
+    pvalue = clf.predict(rand_word_vector)[0]
+    #print "the pvalue is ",pvalue
+    if int(pvalue) == 1:
+      prob = clf.predict_proba(rand_word_vector)
+      flabel.write(word+","+str(prob[0][1])+"\n")
+  flabel.close()
+  
+      
 
   
 
