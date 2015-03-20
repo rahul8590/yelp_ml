@@ -1,4 +1,5 @@
 import numpy as np
+import random
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.linear_model import SGDRegressor , Lasso
 from sklearn.feature_selection import VarianceThreshold
@@ -15,6 +16,8 @@ from sklearn import svm
 from sklearn.cross_validation import train_test_split
 from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import classification_report
+
+
 
 def cross_val(X,y):
   
@@ -55,6 +58,8 @@ def cross_val(X,y):
           print("%0.3f (+/-%0.03f) for %r"
                 % (mean_score, scores.std() / 2, params))
 
+      return clf.best_estimator_
+
 
 def init_train():
   '''
@@ -90,15 +95,24 @@ def init_train():
     else:
       print "The word =>",word," Not found in vector dictionary :("
 
-  return train
+  return train , vdict
 
 
 if __name__ == '__main__':
-  data_list = init_train()
+  data_list, entire_dict_feat = init_train()
   data = np.array(data_list)
   y = data[:,-1] 
   X = data[:, :-1] 
-  cross_val(X,y)
+  clf_estimator = cross_val(X,y)
+
+  rand_word = random.choice(entire_dict_feat.keys()) #getting a random word
+  print "random word is ", rand_word
+  print "feature of the random word is ",entire_dict_feat[rand_word]
+  rand_word_vector = entire_dict_feat[rand_word]
+  
+  clf_estimator.predict(rand_word_vector)
+  print clf_estimator.predict_proba(rand_word_vector)
+
   
 
 
