@@ -61,7 +61,8 @@ def main(ifile):
                 if lines == []: break 
                 processed_lines = Parallel(n_jobs=10)(delayed(process_line)(line) for line in lines)
 	        for result in processed_lines:
-                     ofptr.write(result + " ")
+                     ofptr.write(result)
+                     ofptr.write("\n")
 	ofptr.close()
         print "tota time", time.time() - t0, " secs"
 		
