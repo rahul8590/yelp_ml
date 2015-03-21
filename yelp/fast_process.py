@@ -49,8 +49,8 @@ def process(wrd,common_re,patterns):
 def lprocess(lwords,common_re,patterns):
 	pstr = ''
 	for wrd_str in lwords:
-		for wrd in wrd_str.split(' '):
-			pstr += process(wrd,common_re,patterns)
+		plist = [process(wrd,common_re,patterns) for wrd in wrd_str.split(' ')]
+		pstr += ' '.join(w for w in plist) + ' '
 	return pstr
 
 def grouper(iterable, n, fillvalue=None):
