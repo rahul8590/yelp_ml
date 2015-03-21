@@ -49,7 +49,8 @@ def process(wrd,common_re,patterns):
 def lprocess(lwords,common_re,patterns):
 	pstr = ''
 	for wrd_str in lwords:
-		pstr += process(wrd_str,common_re,patterns)
+		for wrd in wrd_str.split(' '):
+			pstr += process(wrd,common_re,patterns)
 	return pstr
 
 def grouper(iterable, n, fillvalue=None):
@@ -61,11 +62,9 @@ def main(ifile):
 	ppservers = ()
 	job_server = pp.Server(ppservers=ppservers)
 	print "Starting Parallel Python with", job_server.get_ncpus(), "workers"
-
-	
 	frw = open('fast_preprocess_output.txt', 'w')
 	with open(ifile,'r') as myfile:
-		for multi_lines in grouper(myfile, 1000):
+		for multi_lines in grouper(myfile, 2000):
 			ml = [line.strip() for line in multi_lines if line != None]
 			if ml == []: continue
 			job = job_server.submit(lprocess,(ml,common_re,patterns),(process,))
