@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
   
   #Checking for all the words with label == 1
-  flabel = open('label1_v1.txt','w')
+  flabel = open('label1_v2_it5_1e3.txt','w')
   for word in entire_dict_feat:
     rand_word_vector = entire_dict_feat[word]
     #print "word is ",word
