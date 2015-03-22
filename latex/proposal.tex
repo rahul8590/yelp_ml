@@ -1,0 +1,45 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{nips13submit_e,times}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+
+
+\title{Extracting Food Entities from Yelp Reviews}
+
+
+\author{
+Rahul Ramakrishna \\
+Department of Computer Science\\
+University of Massachusetts Amherst\\
+\texttt{rahulram@cs.umass.edu} \\
+}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+%\nipsfinalcopy % Uncomment for camera-ready version
+
+\begin{document}
+
+
+\maketitle
+
+
+Many of the restaurants listed in yelp may not have the the most updated menu. Its really hard for the user to figure out, what food is served best or has the best reviews for a given restaurant. To fetch this information, its important to recognize various food entities mentioned by reviewers. Given plethora of yelp reviews, we need to classify whether the entity is a food related or not. In order to solve this classification problem, we need to build a basic test bed of words which are food related (+ve set) and non-food related words (-ve set). 
+
+The text reviews are extracted and are to coagulated using a pre-processor which will process the reviews and purge unrelated information. For example, phone numbers would be replaced to string phone\_number. The processed reviews will be fed to the word2vectors \footnote{ \url{http://code.google.com/p/word2vec/ } } to generate vectors for each of the words and phrases. Once, features are built, various classification algorithms like SVM/ Logistic Regression \footnote{ Libraries from \url{http://scikit-learn.org/}} will be used to classify and generate probabilities for a given entity to be food related or not. 
+
+Hyper-parameters of word2vectors and classifiers will be tuned based on the probabilities they generate for known data. Also, K-fold cross validation techniques will be applied to validate the pipeline.
+Once a high quality dictionary of food entities is built, we can later use this data to generate best dishes from a given restaurant or best food items from a given city.
+
+
+\end{document}
