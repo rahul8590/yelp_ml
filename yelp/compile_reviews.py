@@ -43,19 +43,21 @@ def sanitize(json_line,label):
 
 def main():
 	fr = open(review_file,'r')
-	f = open('restaurant_reviews_only.txt' ,'a')
+	f = open('restaurant_reviews_with_bid.txt' ,'a')
 
 	blist = fetch_bid()
 
 	print "this list of business ids are ",blist
 
 	for line in fr:
+		mdict  = {}
 		jl = json.loads(line)
 		cur_bid = sanitize(jl,'business_id')
 		if cur_bid in blist:
 			review_text = sanitize(jl, 'text')
-			f.write(review_text)
-			f.write("\n\n")
+			mdict['bid'] = cur_bid
+			mdict['review'] = review_text
+			json.dump(mdict, f,ensure_ascii=False)
 	f.close()
 
 if __name__ == '__main__':
