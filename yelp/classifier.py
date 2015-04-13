@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
   
   #Checking for all the words with label == 1
-  flabel = open('label1_v2_it5_1e3.txt','w')
+  flabel = open('label1_all.txt','w')
   for word in entire_dict_feat:
     rand_word_vector = entire_dict_feat[word]
     #print "word is ",word
@@ -135,9 +135,9 @@ if __name__ == '__main__':
 
     pvalue = clf.predict(rand_word_vector)[0]
     #print "the pvalue is ",pvalue
-    if int(pvalue) == 1:
-      prob = clf.predict_proba(rand_word_vector)
-      flabel.write(word+","+str(prob[0][1])+"\n")
+    #if int(pvalue) == 1:
+    prob = clf.predict_proba(rand_word_vector)
+    flabel.write(word+","+str(prob[0][1])+"\n")
   flabel.close()
   
       

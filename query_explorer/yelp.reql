@@ -1,0 +1,2 @@
+r.db('yelp').table('business')
+  .filter(function (row) { return row('categories').contains('Restaurants'); })
