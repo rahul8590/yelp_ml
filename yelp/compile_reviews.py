@@ -11,6 +11,15 @@ import unicodedata
 business_file = '/rahul_extra/yelp_dataset_challenge_academic_dataset/yelp_academic_dataset_business.json'
 review_file = '/rahul_extra/yelp_dataset_challenge_academic_dataset/yelp_academic_dataset_review.json'
 
+def fetch_rbid():
+	bid = []
+	with open('/rahul_extra/yelp_ml/yelp/rest_bid.txt') as fr:
+		for ids in fr:
+			ids = ids.strip('\n')
+			bid.append(str(ids))
+	return bid
+
+
 
 def fetch_bid():
 	'''
@@ -45,7 +54,7 @@ def main():
 	fr = open(review_file,'r')
 	f = open('restaurant_reviews_with_bid.txt' ,'a')
 
-	blist = fetch_bid()
+	blist = fetch_rbid()
 
 	print "this list of business ids are ",blist
 
