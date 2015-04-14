@@ -1,10 +1,17 @@
 #!/bin/python
 import json
 import sys
+import numpy as np
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+
+
 dcount = {}
 file_sorted = '/rahul_extra/yelp_ml/yelp/data/plabel_v2_sorted.csv'
 file_review = '/rahul_extra/yelp_ml/w2vec/yelp_review_p4.txt'
 wl = {}
+rc = [] #hold the review count
+
 
 #Returns True if the business id refers to restaturant names
 def sanitize(json_line,label):
@@ -20,6 +27,38 @@ def calc_lw(text):
 			lw.append(i)
 	return lw
 
+
+with open(file_review,'r') as fr:
+	for line in fr:
+		try:
+			dl = json.loads(line)
+		except:
+			print line 
+			continue
+		text = dl['review'] 
+		rc.append(len(text.split(' ')))
+
+
+print "total number of reviews calibrated", len(rc)
+
+plt.style.use('ggplot')
+
+x=  rc
+# the histogram of the data
+n, bins, patches = plt.hist(x, 100, range=[0, 1000], facecolor='green')
+
+plt.ylabel('No of Words')
+plt.title('Histogram of Food Related Words in Yelp Review')
+plt.show()
+
+
+
+
+
+
+
+'''
+The following code is to check the histogram of review with food words
 
 with open(file_sorted, 'r') as flabel:
 	for line in flabel:
@@ -59,8 +98,6 @@ with open('restaurant_count_unique.txt','a') as fc:
 	for k in dcount:
 		fc.write(str(k)+","+str(len(set(dcount[k])))+"\n")
 		
-
-
-
+'''
 
  
