@@ -13,13 +13,12 @@ def sanitize(json_line,label):
 	return jnorm
 
 
-def calc_count(text):
-	count = 0
+def calc_lw(text):
+	lw = []
 	for i in text.split(' '):
 		if i in wl:
-			count += 1
-	return count
-
+			lw.append(i)
+	return lw
 
 
 with open(file_sorted, 'r') as flabel:
@@ -40,16 +39,28 @@ with open(file_review,'r') as fr:
 		except:
 			print line 
 			continue
-		dcount[str(dl['bid'])] = dcount.get(str(dl['bid']),0) + calc_count(str(dl['review']))
+		if dcount.has_key(str(dl['bid'])):
+			sl = dcount[str(dl['bid'])]
+		else:
+			sl = []
+		
+		ires = calc_lw(str(dl['review']))
+		for i in ires:
+			sl.append(i)
+		dcount[str(dl['bid'])] = sl
+
+
+		#dcount[str(dl['bid'])] = dcount.get(str(dl['bid']),0) 
 		#print 	dl['bid'] , dcount[str(dl['bid'])]
 
 
 
-with open('restaurant_count.txt','a') as fc:
+with open('restaurant_count_unique.txt','a') as fc:
 	for k in dcount:
-		fc.write(str(k)+","+str(dcount[k])+"\n")
+		fc.write(str(k)+","+str(len(set(dcount[k])))+"\n")
 		
 
 
 
 
+ 
