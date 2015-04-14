@@ -50,11 +50,11 @@ def process(wrd):
 
 
 def line_sanitize(line):
-	thread_pool = mp.Pool(processes=2)
+	#thread_pool = mp.Pool(processes=2)
 	wrd  = [w.lower() for w in line.strip().split()]
-    if wrd == []: return None
-    wrds = thread_pool.map(process, wrd)
-    return wrds
+	if wrd == []: return None
+	wrds = [process(i) for i in  wrd]
+	return wrds
 
 def fetch_rbid():
 	bid = []

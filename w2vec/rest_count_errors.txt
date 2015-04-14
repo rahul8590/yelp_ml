@@ -1,0 +1,38 @@
+{"bid": "pQAIM21Yw4eNdbha2Rxkcg", "review": "automatic 20_gratuity even increasing the credit_card charge after the customer leaves is this true http_www_yelp_com_topic scottsdale-automatic-20-gratuity-are-we-legally-obliged-to
+
+rahul@g3ck0:/rahul_extra/yelp_ml/w2vec$ clear
+
+rahul@g3ck0:/rahul_extra/yelp_ml/w2vec$ python rest_count.py 
+ {"bid": "pQAIM21Yw4eNdbha2Rxkcg", "review": "automatic 20_gratuity even increasing the credit_card charge after the customer leaves is this true http_www_yelp_com_topic scottsdale-automatic-20-gratuity-are-we-legally-obliged-to
+
+ {"bid": "1AMncE6Lxdr6J9PeqZi4nA", "review": "when guns are outlawed only waitresses will have guns april_26 WEEKEND man or woman you must wear a gunbelt and six-shooter bolo tie and tight_fitting jeans to work at the big apple unless you cook or do dishes the rest of my yahoo local review and pics_http local yahoo_com info-31500266-bill-johnsons-big-apple-restaurants-phoenix"
+
+ {"bid": "DjdA1xbHki_lopCSxf-Egg", "review": "sign the petition save greasewood_flats sign the petition to keep a bar that has been around since the WEEKEND s alive a traditional cowboy watering_hole that brings tourists bikers and locals together for live country_western music all in one scottsdale is either moving them or closing them down http_www change org petitions city-of-scottsdale-az-relocate-and-continue-greasewood-fla
+
+ {"bid": "T4ox3wUzFjWvyrjaTRoBbA", "review": "this place was hit with health_violations as detailed in the 3 16_2014 in maricopa article linked below yikes i will not be returning unless under new management http_www inmaricopa com article 2010 03 16 restaurants-in-nearby-maricopa-county-hit-with-health-viol
+
+ {"bid": "bzDs0u8I-z231QVdIQWkrA", "review": "if you ve ever been an inebriated bachelor and piled whatever you found in your fridge in between two slices of bread or into a tortilla or perhaps a struggling mother who feeds her family a hearty mash-up of whatever once a week on leftover night then you ll appreciate the king of the sandwiches don't be afraid of rubbing_elbows with your fellow_patrons or of a little grease running down from your overstuffed-torta-compressing hand all the way to that elbow try somethign that sounds loco -- it won't be that hard a couple of the choices contain basically everything you could think of to put on a sandwich and then some actually you could get a single sandwich that contains the innards of about a half_dozen sandwiches all at once epiphany lrdlt s del_rey and las reynas sandwiches are essentially the turduken of torta shop tortas enjoy your hotdoghamchickenfriedsteakchickenfriedchickenchorizocheese
+
+ {"bid": "X6mWr96ibKdXQSA6mpH90g", "review": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+ {"bid": "ElqD819zpmOryvsLuzv-Mw", "review": "cookies if cookie_monster had not been arrested in times square recently i would say that you could find him here eating all the yummy cookies i like to stroll over here and devour a few dozen cookies now and again i guess you could call me a cookie_monster legal everyone here is so friendly and sometimes even gives me free cookies when i order 2 they give me 3 etc i've eaten other food here a few_times chili was good but no tabasco was available to make it better never had a sandwich here so can't say i will say it one more time though cookies no one judges you for it http todayentertainment today com_news 2013 04_09 17671380-costumed-cookie-monster-arrested-after-shoving-2-
+
+ {"bid": "EC9WB-iVjd28B6R6KIZ8TA", "review": "be_careful this place just had 12 health_violations http_www_kpho_com story 23042384 dirty-dining-aug-1-valley-sushi-bar-has-12-major-violation
+
+ {"bid": "U1vsVIrIuSBZAGNahBNFVQ", "review": "my grandpa doesn_t get out much and after he had the crab_cake dinner here last_week he has been thinking about it ever since i think it's because he got to eat some of my aunt s lobster_carbonara my mom s lobster_mac_cheese and some tiramisu i went on their website and joined the email_club they emailed me a 2 for 1 coupon up to MONEY right_away this time i ordered the the ultimate chicken sandwich which has chicken_breast topped with havarti_cheese applewood_smoked_bacon sliced avocado and all the trimmings with honey_mustard_dressing oh_yeah the endless fries i only got one refill this time when the bill came it had a card to join the email_club and it said you can get a free entree i'm not sure if that means another 2 for 1 coupon or a coupon for a free entree http pages rubytuesdayrestaurants com page aspx qs 773ed3059447707deabda7bb9014e2bc76683fcf2ec10edcbf62b7dc63
+
+ {"bid": "XvXisQrvJXcGK5nTImokrw", "review": "dear b-dub3 waitstaff when your customers make a special request please consider paying_attention for example the other day when we requested our order of chicken wings extra crispy they came out almost underdone then after sending them back and expressing our displeasure voila our waitress returns two minutes_later with a new batch well i can do that math wow that was fast i say a weensy bit on the dubious side oh when we re this busy we have new orders coming out all the time says our over-perky waitress extra crispy pfffffffft double fail you lose sincerely patron-who-will-never-be-ordering-chicken-wings-in-your-es
+
+ {"bid": "IcB2KDjGXdkG07Sitmik0A", "review": "lushburger is so named because lush is british slang for attractive and that's the perfect name for this place not only are the customers extremely beautiful but amazingly the burgers are even more so to read my complete review go to http_www examiner com x-4463-transplants-to-phoenix-examiner y2010m5d15-lushburger-in-scottsdale-is-latest-spot-to-eat-
+
+ {"bid": "YppzR-sn8y15dmUd1lLcfw", "review": "more locations coming soon http_www reviewjournal_com business retail qa-luiz-claudio-oliveira-owner-and-operator-sambalatte-tor
+
+ {"bid": "uy0YRkWZ7T30f6ruH-51Mg", "review": "5 major_health_code violations its a shame because i really liked this place and the food was pretty good but i wont be eating there again http_www_kpho_com story 19242726 dirty-dining-aug-9-cockroach-falls-on-health-inspector-at-
+
+ {"bid": "E3n771Z4Uqy46WNaFS5u0g", "review": "i was with a prom group of 48 who came here for the prom package this was a three course meal that we prepaid for and everything the food wasn_t revolting or anything but the day after about 25 of us got sick vomiting stomach_aches migraines fatigue you name it we called the restaurant and they merely said we ll look into it and never called us back as they promised the school nurses got involved which brought the health_district involved they realized we have contracted norovirus how can they take this so lightly i'm surprised they haven't called back many of the students who called them to report the food poisoning begging them to take a free gift_card or something for crying out loud they took our names and numbers and said specifically they will call back the next day http_www fox5vegas com story 22286174 health-district-students-contracted-norovirus-after-visiti
+
+ {"bid": "UxiE7c0kB6m4SjMCMqEbHw", "review": "http_www thestar com travel northamerica article 1155723--six-new-meals-in-montreal-the-food-lover-s-paradi
+
+ {"bid": "qdCbbg7FyD6mzf0L_g64uA", "review": "wtf where my biscuit cheap owner n cheap freaking shit head i'm pissassssssssssssssssssssssssjsjjsjshdhdhshsbsbbshshsbsbsb
+
+ {"bid": "GLBxuQBomEciNal85mJdMg", "review": "awesome night life the waitress is rude at times though the blonde that lives here has an attitude and doesn_t seem to mind her own business hahahahshshshshshshshshshshshshshshsshhshsshshshshahahahah jananabababahahahahahahahahahahahahahahahahahahahhhahahaha
