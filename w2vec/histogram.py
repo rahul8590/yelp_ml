@@ -3,6 +3,14 @@ import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 
 
+'''
+Sample data in restaurant_count.txt
+rest_id,value
+rest_id,value
+rest_id,value 
+'''
+
+
 x = []
 with open('restaurant_count.txt') as fr:
 	for line in fr:
