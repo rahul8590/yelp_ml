@@ -1,2 +1,13 @@
 r.db('yelp').table('business')
   .filter(function (row) { return row('categories').contains('Restaurants'); })
+
+#Count of the RestaurantIds, 
+r.db('yelp').table('business')
+  .filter(function (row) { return row('categories').contains('Restaurants'); })
+  .map(function(row) { return row('business_id') })
+  .count()
+
+#Extract business_id,review_count,stars (ratings)
+r.db('yelp').table('business')
+  .filter(function (row) { return row('categories').contains('Restaurants'); })
+  .pluck(['business_id','review_count','stars'])

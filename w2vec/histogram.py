@@ -19,6 +19,8 @@ with open('restaurant_count_unique.txt') as fr:
 
 x.sort(reverse=True)
 print len(x)
+
+
 plt.style.use('ggplot')
 
 # the histogram of the data
