@@ -23,8 +23,8 @@ def sanitize(json_line,label):
 def calc_lw(text):
 	lw = []
 	for i in text.split(' '):
-		#if i in wl: 
-		lw.append(i)
+		if i in wl: 
+			lw.append(i)
 	return lw
 
 
@@ -78,7 +78,7 @@ with open(file_review,'r') as fr:
 		except:
 			print line 
 			continue
-		'''
+		
 		if dcount.has_key(str(dl['bid'])):
 			sl = dcount[str(dl['bid'])]
 		else:
@@ -94,11 +94,11 @@ with open(file_review,'r') as fr:
 
 		#dcount[str(dl['bid'])] = dcount.get(str(dl['bid']),0) 
 		#print 	dl['bid'] , dcount[str(dl['bid'])]
+		'''
 
-
-with open('restaurant_reviews_total_words.txt','w') as fc:
+with open('restaurant_total_food_words.txt','w') as fc:
 	for k,v in dcount.iteritems():
-		fc.write(str(k)+","+str(v)+"\n")
+		fc.write(str(k)+","+str(len(v))+"\n")
 		
 
 
