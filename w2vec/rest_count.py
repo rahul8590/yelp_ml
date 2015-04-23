@@ -23,11 +23,15 @@ def sanitize(json_line,label):
 def calc_lw(text):
 	lw = []
 	for i in text.split(' '):
-		if i in wl:
-			lw.append(i)
+		#if i in wl: 
+		lw.append(i)
 	return lw
 
 
+def calc_tw(text):
+	return len(text.split(' '))
+
+'''
 with open(file_review,'r') as fr:
 	for line in fr:
 		try:
@@ -51,14 +55,10 @@ plt.ylabel('No of Words')
 plt.title('Histogram of Food Related Words in Yelp Review')
 plt.show()
 
-
-
-
-
-
-
 '''
-The following code is to check the histogram of review with food words
+
+
+#The following code is to check the histogram of review with food words
 
 with open(file_sorted, 'r') as flabel:
 	for line in flabel:
@@ -78,6 +78,7 @@ with open(file_review,'r') as fr:
 		except:
 			print line 
 			continue
+		'''
 		if dcount.has_key(str(dl['bid'])):
 			sl = dcount[str(dl['bid'])]
 		else:
@@ -87,17 +88,18 @@ with open(file_review,'r') as fr:
 		for i in ires:
 			sl.append(i)
 		dcount[str(dl['bid'])] = sl
+		'''
+		dcount[str(dl['bid'])] = dcount.get(str(dl['bid']),0) + calc_tw(str(dl['review']))
 
 
 		#dcount[str(dl['bid'])] = dcount.get(str(dl['bid']),0) 
 		#print 	dl['bid'] , dcount[str(dl['bid'])]
 
 
-
-with open('restaurant_count_unique.txt','a') as fc:
-	for k in dcount:
-		fc.write(str(k)+","+str(len(set(dcount[k])))+"\n")
+with open('restaurant_reviews_total_words.txt','w') as fc:
+	for k,v in dcount.iteritems():
+		fc.write(str(k)+","+str(v)+"\n")
 		
-'''
+
 
  
