@@ -43,10 +43,10 @@ ggsave('unique-no-of-food-entities.png')
 
 # no_of_words vs unique_no_of_food_entities
 ggplot(data=df, aes(x=no_of_words, y = unique_no_of_food_entities)) + geom_point(aes(color=rating), shape=1) + facet_grid(rating ~ .) 
-ggsave('no-of-words vs unique-no-of-food-entities.png')
+ggsave('no-of-words-vs-unique-no-of-food-entities.png')
 
 # no_of_reviews vs unique_no_of_food_entities
 ggplot(data=df, aes(x=no_of_reviews, y = unique_no_of_food_entities)) + geom_point(aes(color=rating), shape=1) + facet_grid(rating ~ .) 
-ggsave('no-of-reviews vs unique-no-of-food-entities.png')
+ggsave('no-of-reviews-vs-unique-no-of-food-entities.png')
 
 
