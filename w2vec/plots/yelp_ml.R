@@ -32,11 +32,11 @@ ggplot(data=df, aes(x=avg_rating)) + geom_histogram(aes(fill=rating))
 ggsave('avg-rating.png')
 
 ## no_of_reviews
-ggplot(data=df, aes(x=no_of_reviews)) + geom_density(aes(fill=rating), alpha=0.3)
+ggplot(data=df, aes(x=no_of_reviews)) + geom_density(aes(fill=rating, color=rating), alpha=0.3)
 ggsave('no-of-reviews.png')
 
 ## no_of_words
-ggplot(data=df, aes(x=no_of_words)) + geom_density(aes(fill=rating), alpha=0.3)
+ggplot(data=df, aes(x=no_of_words)) + geom_density(aes(fill=rating, color=rating), alpha=0.3)
 ggsave('no-of-words.png')
 
 # unique_no_of_food_entities
