@@ -1,5 +1,7 @@
 
-library(ggplot2)
+## install.packages('ggplot2')
+library(ggplot2)  
+
 
 setwd('/Users/jshankar/Dropbox/yelp_ml/')
 df <- read.csv('finaldata.csv')
