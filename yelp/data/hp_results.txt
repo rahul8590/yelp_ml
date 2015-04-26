@@ -1,0 +1,51 @@
+hyper Parameter Results 
+-------------------------
+
+LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, penalty='l2', random_state=None, tol=0.0001)
+()
+Grid scores on development set:
+()
+0.940 (+/-0.029) for {'penalty': 'l1', 'C': 1.0}
+0.985 (+/-0.015) for {'penalty': 'l2', 'C': 1.0}
+0.940 (+/-0.029) for {'penalty': 'l1', 'C': 2.0}
+0.985 (+/-0.015) for {'penalty': 'l2', 'C': 2.0}
+0.955 (+/-0.031) for {'penalty': 'l1', 'C': 5.0}
+0.985 (+/-0.015) for {'penalty': 'l2', 'C': 5.0}
+0.955 (+/-0.031) for {'penalty': 'l1', 'C': 10.0}
+0.985 (+/-0.015) for {'penalty': 'l2', 'C': 10.0}
+
+
+# Tuning hyper-parameters for accuracy
+()
+Best parameters set found on development set:
+()
+RandomForestClassifier(bootstrap=True, compute_importances=None,
+            criterion='gini', max_depth=None, max_features='auto',
+            max_leaf_nodes=None, min_density=None, min_samples_leaf=1,
+            min_samples_split=2, n_estimators=10, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0)
+()
+Grid scores on development set:
+()
+0.746 (+/-0.041) for {'n_estimators': 2}
+0.851 (+/-0.049) for {'n_estimators': 5}
+0.955 (+/-0.031) for {'n_estimators': 10}
+0.940 (+/-0.038) for {'n_estimators': 15}
+
+
+
+SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+  kernel='linear', max_iter=-1, probability=True, random_state=None,
+  shrinking=True, tol=0.001, verbose=False)
+()
+Grid scores on development set:
+()
+1.000 (+/-0.000) for {'kernel': 'linear', 'C': 1.0, 'probability': True}
+0.522 (+/-0.009) for {'kernel': 'poly', 'C': 1.0, 'probability': True}
+1.000 (+/-0.000) for {'kernel': 'linear', 'C': 2.0, 'probability': True}
+0.522 (+/-0.009) for {'kernel': 'poly', 'C': 2.0, 'probability': True}
+1.000 (+/-0.000) for {'kernel': 'linear', 'C': 5.0, 'probability': True}
+0.522 (+/-0.009) for {'kernel': 'poly', 'C': 5.0, 'probability': True}
+1.000 (+/-0.000) for {'kernel': 'linear', 'C': 10.0, 'probability': True}
+0.522 (+/-0.009) for {'kernel': 'poly', 'C': 10.0, 'probability': True}
