@@ -6,7 +6,7 @@ from sklearn.feature_selection import VarianceThreshold
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.linear_model import BayesianRidge
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestRegressor , GradientBoostingRegressor
+from sklearn.ensemble import RandomForestClassifier , GradientBoostingRegressor
 
 from sklearn.feature_selection import SelectKBest
 from sklearn.pipeline import Pipeline
@@ -32,9 +32,13 @@ def cross_val(X,y):
   #pipeline = Pipeline([#('feature_trans', MinMaxScaler()), 
     #('feature_sel', RFE(BayesianRidge())), 
   #  ('reg', BayesianRidge())])
-  #LinearSVC
-  tuned_parameters = {'penalty': ['l1','l2'],
-                      'C': [1.0,2.0,5.0,10.0]}
+  
+  #RandomForestClassifier
+  tuned_parameters = {'n_estimators': [2,5,10,15]}
+
+  #Logistic Regression
+  #tuned_parameters = {'penalty': ['l1','l2'],
+  #                    'C': [1.0,2.0,5.0,10.0]}
 
   #SVM
   #tuned_parameters = {'C': [1.0,2.0,5.0,10.0],
@@ -46,7 +50,7 @@ def cross_val(X,y):
   for score in scores:
       print("# Tuning hyper-parameters for %s" % score)
       print()
-      clf = GridSearchCV(LogisticRegression(), tuned_parameters, cv=5, scoring=score)
+      clf = GridSearchCV(RandomForestClassifier(), tuned_parameters, cv=5, scoring=score)
       clf.fit(X_train, y_train)
       print("Best parameters set found on development set:")
       print()
@@ -122,7 +126,7 @@ if __name__ == '__main__':
 
   
   #Checking for all the words with label == 1
-  flabel = open('label1_all_logistic_regression.txt','w')
+  flabel = open('label1_all_random_forest.txt','w')
   for word in entire_dict_feat:
     rand_word_vector = entire_dict_feat[word]
     #print "word is ",word
