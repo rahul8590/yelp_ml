@@ -33,20 +33,20 @@ def cross_val(X,y):
     #('feature_sel', RFE(BayesianRidge())), 
   #  ('reg', BayesianRidge())])
   #LinearSVC
-  #tuned_parameters = {'loss': ['l1','l2'],'penalty': ['l2'],
-  #                    'C': [1.0,2.0,5.0,10.0]}
+  tuned_parameters = {'penalty': ['l1','l2'],
+                      'C': [1.0,2.0,5.0,10.0]}
 
   #SVM
-  tuned_parameters = {'C': [1.0,2.0,5.0,10.0],
-                      'kernel': ['linear','poly'],
-                      'probability': [True]}
+  #tuned_parameters = {'C': [1.0,2.0,5.0,10.0],
+  #                    'kernel': ['linear','poly'],
+  #                    'probability': [True]}
 
   scores = ['accuracy']
 
   for score in scores:
       print("# Tuning hyper-parameters for %s" % score)
       print()
-      clf = GridSearchCV(SVC(), tuned_parameters, cv=5, scoring=score)
+      clf = GridSearchCV(LogisticRegression(), tuned_parameters, cv=5, scoring=score)
       clf.fit(X_train, y_train)
       print("Best parameters set found on development set:")
       print()
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
   
   #Checking for all the words with label == 1
-  flabel = open('label1_all.txt','w')
+  flabel = open('label1_all_logistic_regression.txt','w')
   for word in entire_dict_feat:
     rand_word_vector = entire_dict_feat[word]
     #print "word is ",word
