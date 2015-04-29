@@ -13,6 +13,7 @@ df$unique_no_of_food_entities <- as.integer(df$unique_no_of_food_entities)
 df$no_of_food_entities        <- as.integer(df$no_of_food_entities)
 df$avg_rating                 <- as.numeric(df$avg_rating)
 
+
 ## group the restuarants with rating 
 df$rating = rep(NA, nr)
 for (i in 1:nr) {
@@ -27,6 +28,11 @@ for (i in 1:nr) {
 df$rating <- as.factor(df$rating)
 print (summary(df))
 
+## count # of good, ok, bad
+n_good <- sum(df$rating == 'GOOD')
+n_ok   <- sum(df$rating == 'OK')
+n_bad  <- sum(df$rating == 'BAD')
+
 ##avg_rating
 ggplot(data=df, aes(x=avg_rating)) + geom_histogram(aes(fill=rating))
 ggsave('avg-rating.png')
@@ -40,15 +46,19 @@ ggplot(data=df, aes(x=no_of_words)) + geom_density(aes(fill=rating, color=rating
 ggsave('no-of-words.png')
 
 # unique_no_of_food_entities
-ggplot(data=df, aes(x=unique_no_of_food_entities)) + geom_histogram(aes(fill=rating))
+ggplot(data=df, aes(x=unique_no_of_food_entities)) + geom_bar(aes(fill=rating), color='black')
 ggsave('unique-no-of-food-entities.png')
 
+ 
+
 # no_of_words vs unique_no_of_food_entities
-ggplot(data=df, aes(x=no_of_words, y = unique_no_of_food_entities)) + geom_point(aes(color=rating), shape=1) + facet_grid(rating ~ .) 
+ggplot(data=df, aes(x=no_of_words, y = unique_no_of_food_entities)) + geom_line(aes(color=rating), shape=1) + facet_grid(rating ~ .) 
 ggsave('no-of-words-vs-unique-no-of-food-entities.png')
 
 # no_of_reviews vs unique_no_of_food_entities
-ggplot(data=df, aes(x=no_of_reviews, y = unique_no_of_food_entities)) + geom_point(aes(color=rating), shape=1) + facet_grid(rating ~ .) 
+ggplot(data=df, aes(x=no_of_reviews, y = unique_no_of_food_entities)) + geom_line(aes(color=rating), shape=1) + facet_grid(rating ~ .) 
 ggsave('no-of-reviews-vs-unique-no-of-food-entities.png')
+
+
 
 
