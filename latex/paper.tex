@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage[section]{placeins}
 
 \title{Extracting Food Entities from Yelp Reviews}
@@ -60,14 +61,48 @@ To derieve any meaning information from users review about food items, we need t
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=0.5]{ml.jpg}
-    \label{fig:}
+    \includegraphics[scale=0.6]{ml.jpg}
+    \label{fig:1}
     \caption{}
   \end{center}
 \end{figure}
 
 
 \section{Data Set}
+
+Preliminary analysis of the dataset. After pre-processing the yelp reviews, based on reviews we have seggregated the reviews on Good,Ok and Bad ratings. The following graph shows the distribution of these ratings
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.1]{./plots/avg-rating.png}
+    \label{fig:}
+    \caption{}
+  \end{center}
+\end{figure}
+
+
+No of reviews 
+
+\begin{figure}[h]
+    \centering
+    \subfloat[label 1]{{\includegraphics[width=6cm]{./plots/no-of-reviews.png} }}%
+    \qquad
+    \subfloat[label 2]{{\includegraphics[width=6cm]{./plots/no-of-words.png} }}%
+    \caption{2 Figures side by side}%
+    \label{fig:example}%
+\end{figure}
+
+
+Unique number of food entities
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.1]{./plots/unique-no-of-food-entities.png}
+    \label{fig:}
+    \caption{}
+  \end{center}
+\end{figure}
+
 
 
 
