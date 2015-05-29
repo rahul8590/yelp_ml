@@ -37,6 +37,11 @@ University of Massachusetts Amherst\\
 
 \begin{abstract}
 
+
+$Recall = \frac{No_of_Related_Words_Retreved_at_t \geq 0.5}{Total_No_of_Related_Words_in_Vocab}$
+
+
+
 Many of the restaurants listed in yelp \footnote{\url{http://www.yelp.com/dataset_challenge/}} may not have the the latest updated menu. Its really hard for the user to figure out, which food item is served best in a given restaurant since, most of the menu cards are graphic images linked to external websites or have not been updated for a long time. Also, its very unlikely that all the menu items will be a special delicacy for a given restaurant. Thus, to fetch this information, its important to categorize various food entities mentioned by reviewers [1]. This will help us in ranking food items based on reviews for a given restaurant. 
 
 To derieve any meaning information from users review about food items, we need to first build a high quality dictionary of food items. We use a semi-supervised method using various classfiers to classify whether a word is food item or not. Using this we infered some interseting insights into yelp dataset and found corelations between number of words in a give user review to average rating of the restaurant. We also got a accurate ranking of food items for a given restaurant.
@@ -83,25 +88,6 @@ Preliminary analysis of the dataset. After pre-processing the yelp reviews, base
 
 No of reviews 
 
-\begin{figure}[h]
-    \centering
-    \subfloat[label 1]{{\includegraphics[width=6cm]{./plots/no-of-reviews.png} }}%
-    \qquad
-    \subfloat[label 2]{{\includegraphics[width=6cm]{./plots/no-of-words.png} }}%
-    \caption{2 Figures side by side}%
-    \label{fig:example}%
-\end{figure}
-
-
-Unique number of food entities
-
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[scale=0.1]{./plots/unique-no-of-food-entities.png}
-    \label{fig:}
-    \caption{}
-  \end{center}
-\end{figure}
 
 
 
